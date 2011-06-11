@@ -1,7 +1,9 @@
 package fitnesse.wiki.cmSystems;
 
 import java.io.File;
+
 import java.lang.reflect.Method;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.Map;
 
 import fitnesse.components.CommandRunner;
 import fitnesse.wiki.FileSystemPage;
+
+import static java.io.File.*;
+import static java.lang.String.*;
 
 public class PerforceCmSystem {
 
@@ -18,8 +23,8 @@ public class PerforceCmSystem {
   protected static Method executeMethod;
 
   static {
-    ignoredPaths.add("/RecentChanges/");
-    ignoredPaths.add("/ErrorLogs/");
+    ignoredPaths.add(format("%1$sRecentChanges%1$s", separatorChar));
+    ignoredPaths.add(format("%1$sErrorLogs%1$s", separatorChar));
 
     try {
       executeMethod = PerforceCmSystem.class.getDeclaredMethod(
