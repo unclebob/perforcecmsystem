@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fitnesse.components.CommandRunner;
-import fitnesse.wiki.FileSystemPage;
+import fitnesse.testsystems.CommandRunner;
+import fitnesse.wiki.fs.FileSystemPage;
 
 import static java.io.File.*;
 import static java.lang.String.*;
@@ -106,7 +106,7 @@ public class PerforceCmSystem {
 
   protected static String executePerforceCommand(String method, String command)
       throws Exception {
-    CommandRunner runner = new CommandRunner(command, "");
+    CommandRunner runner = new CommandRunner(command, "", null);
     runner.run();
     if (runner.getError().length() > 0 || runner.getExitCode() != 0) {
       System.err.println(method + " command: " + command);
